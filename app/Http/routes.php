@@ -32,6 +32,8 @@ Route::post('customer/resep','CustomerController@storeresep');
 Route::put('customer','CustomerController@update');
 Route::put('customer/resep','CustomerController@updateresep');
 Route::post('customer/cari','CustomerController@cari');
+Route::post('customer/cariidmember','CustomerController@cariidmember');
+Route::post('customer/carinohp','CustomerController@carinohp');
 Route::delete('customer/hapus/{id}', 'CustomerController@destroy');
 Route::delete('customer/resep/hapus/{id}', 'CustomerController@destroyresep');
 

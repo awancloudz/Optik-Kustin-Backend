@@ -67,6 +67,20 @@ class CustomerController extends Controller
 
     public function store(Request $request){
         $input = $request->all();
+
+        $customerakhir = Customer::all();
+        $kodeakhir = Customer::orderBy('id', 'desc')->first();
+        
+        $trx = "6";
+        if($customerakhir->count() > 0){
+            $kodecustomer = $trx . sprintf("%05s", $kodeakhir->id + 1);
+        }
+        else
+        {
+            $kodecustomer = $trx . "00001";
+        }
+        $input['kodecustomer'] = $kodecustomer;
+
         $customer = Customer::create($input);
         return $customer;
     }
@@ -132,6 +146,44 @@ class CustomerController extends Controller
         //Query
         $data = Customer::where('nama', 'LIKE', '%' . $kata_kunci . '%')->where('jenis','=','customer')
             ->orderBy('nama', 'asc')->get();
+        $jumlah = $data->count();
+        if($jumlah > 0){
+            $customer = collect($data);
+            $customer->toJson();
+            return $customer;
+        }
+        else{
+            $data = [
+                ['id' => null],
+            ];
+            $customer = collect($data);
+            $customer->toJson();
+            return $customer;
+        }
+    }
+    public function cariidmember(Request $request){
+        $kata_kunci = $request->input('kodecustomer');
+        //Query
+        $data = Customer::where('kodecustomer','=', $kata_kunci)->where('jenis','=','customer')->get();
+        $jumlah = $data->count();
+        if($jumlah > 0){
+            $customer = collect($data);
+            $customer->toJson();
+            return $customer;
+        }
+        else{
+            $data = [
+                ['id' => null],
+            ];
+            $customer = collect($data);
+            $customer->toJson();
+            return $customer;
+        }
+    }
+    public function carinohp(Request $request){
+        $kata_kunci = $request->input('notelp');
+        //Query
+        $data = Customer::where('notelp','=', $kata_kunci)->where('jenis','=','customer')->get();
         $jumlah = $data->count();
         if($jumlah > 0){
             $customer = collect($data);

@@ -23,12 +23,21 @@ class CreateTableResep extends Migration
             $table->double('l_axs');
             $table->double('r_add');
             $table->double('l_add');
-            $table->double('r_mpd');
-            $table->double('l_mpd');
-            $table->double('r_pv');
-            $table->double('l_pv');
-            $table->double('r_sh');
-            $table->double('l_sh');
+            $table->double('pd');
+            $table->string('visakhir',50);
+            $table->double('A');
+            $table->double('B');
+            $table->double('dbl');
+            $table->double('mpd');
+            $table->double('shpv');
+            $table->string('jenisframe',50);
+            $table->string('koridor',50);
+            $table->string('visusbalance',50);
+            $table->string('dukeelder',50);
+            $table->string('wrapangle',50);
+            $table->string('pantoskopik',50);
+            $table->string('vertexdistance',50);
+            $table->text('catatan');
             $table->timestamps();
         });
     }

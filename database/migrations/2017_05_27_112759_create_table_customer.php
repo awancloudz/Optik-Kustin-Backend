@@ -14,11 +14,14 @@ class CreateTableCustomer extends Migration
     {
         Schema::create('customer', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('kodecustomer', 50);
             $table->string('nama', 50);
             $table->text('alamat');
             $table->string('notelp', 20);
             $table->enum('jenis', ['customer','distributor','retail']);
             $table->date('tanggallahir');
+            $table->string('umur', 50);
+            $table->enum('jeniskelamin', ['laki-laki','perempuan']);
             $table->timestamps();
         });
         Schema::table('transaksi', function(Blueprint $table) {

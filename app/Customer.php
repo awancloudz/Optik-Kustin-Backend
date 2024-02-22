@@ -9,11 +9,14 @@ class Customer extends Model
     protected $table = 'customer';
 
     protected $fillable = [
+        'kodecustomer',
     	'nama',
     	'alamat',
         'notelp',
         'jenis',
         'tanggallahir',
+        'umur',
+        'jeniskelamin',
         'created_at',
         'updated_at'
     ];

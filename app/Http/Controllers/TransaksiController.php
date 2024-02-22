@@ -9,6 +9,7 @@ use App\Transaksi;
 use App\DetailTransaksi;
 use App\Keranjang;
 use App\Customer;
+use App\Resep;
 use App\Users;
 use App\Produk;
 use App\Profile;
@@ -39,7 +40,7 @@ class TransaksiController extends Controller
     }
     public function view($idtrans){
         settype($idtrans, "integer");
-        $data = Transaksi::where('id', $idtrans)->with('customer')->with('karyawan')->with('detailtransaksi.produk.merk')->with('profile')->with('pengiriman.profile')->orderBy('created_at', 'desc')->get();
+        $data = Transaksi::where('id', $idtrans)->with('customer.resep')->with('karyawan')->with('detailtransaksi.produk.merk')->with('profile')->with('pengiriman.profile')->orderBy('created_at', 'desc')->get();
         $jumlah = $data->count();
         if($jumlah > 0){
             $transaksi = collect($data);
