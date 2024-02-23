@@ -56,6 +56,30 @@ class TransaksiController extends Controller
             return $transaksi;
         }
     }
+    public function viewsuratorder($idtrans){
+        settype($idtrans, "integer");
+        $data = Transaksi::where('id', $idtrans)->with('customer.resep')->with('karyawan')->with('detailtransaksi.produk.merk')->with('profile')->with('pengiriman.profile')->orderBy('created_at', 'desc')->get();
+        $jumlah = $data->count();
+        if($jumlah > 0){
+            $transaksi = collect($data);
+            $transaksi->toJson();
+
+            $parsed_data = json_decode($transaksi, true);
+            if (is_array($parsed_data) && count($parsed_data) === 1) {
+                $parsed_data = reset($parsed_data);
+            }
+            $new_json_data = json_encode($parsed_data);
+            return $new_json_data;
+        }
+        else{
+            $data = [
+                ['id' => null],
+            ];
+            $transaksi = collect($data);
+            $transaksi->toJson();
+            return $transaksi;
+        }
+    }
     public function store(Request $request){
         //1. Mengambil value dari input text
         $input = $request->all();

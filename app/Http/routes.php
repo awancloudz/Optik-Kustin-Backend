@@ -98,6 +98,7 @@ Route::delete('user/hapus/{id}', 'UserController@destroy');
 //TRANSAKSI
 Route::get('transaksi/{jenis}/profile/{idprofile}','TransaksiController@index');
 Route::get('transaksi/view/{idtrans}','TransaksiController@view');
+Route::get('transaksi/viewsuratorder/{idtrans}','TransaksiController@viewsuratorder');
 Route::post('transaksi','TransaksiController@store');
 Route::patch('transaksi','TransaksiController@update');
 Route::post('transaksi/cari','TransaksiController@cari');
