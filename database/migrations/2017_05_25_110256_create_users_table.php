@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->rememberToken();
-            $table->enum('level', ['admin','sales','kurirß']);
+            $table->enum('level', ['admin','sales','headstore','inventory','edger','QC']);
             $table->timestamps();
         });
     }

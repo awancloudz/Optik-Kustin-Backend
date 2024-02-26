@@ -28,7 +28,8 @@ class CreateTableResep extends Migration
             $table->double('A');
             $table->double('B');
             $table->double('dbl');
-            $table->double('mpd');
+            $table->double('r_mpd');
+            $table->double('l_mpd');
             $table->double('shpv');
             $table->string('jenisframe',50);
             $table->string('koridor',50);
