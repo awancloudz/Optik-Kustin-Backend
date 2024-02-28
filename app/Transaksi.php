@@ -30,6 +30,7 @@ class Transaksi extends Model
         'status',
         'statustoko',
         'statustransaksi',
+        'statusorder',
         'statusresep',
         'metode',
         'created_at',

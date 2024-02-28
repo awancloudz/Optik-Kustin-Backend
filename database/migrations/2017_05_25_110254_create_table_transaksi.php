@@ -34,6 +34,7 @@ class CreateTableTransaksi extends Migration
             $table->enum('status',['lunas','belum']);
             $table->enum('statustoko',['pusat','cabang']);
             $table->enum('statustransaksi',['belum','sudah','batal']);
+            $table->enum('statusorder',['order','needapproval','approved0','approved1','ordervendor0','ordervendor1','edger','qc','gagal','selesai']);
             $table->integer('statusresep');
             $table->enum('metode',['debit','cash']);
             $table->timestamps();
